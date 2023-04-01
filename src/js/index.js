@@ -1,14 +1,30 @@
-const respuesta = document.getElementById("respuesta")
-const enviar = document.getElementById("enviar")
+const resultadosInput = document.getElementById("numero-resultados")
 
 function cantidadNumeros() {
     let resultados = parseInt(document.getElementById("numero-resultados").value) || 0
 
-    if(resultados <= 0) {
-        console.log("Debes generar al menos 1 resultado")
-    } else {
-        numerosAleatorio(resultados)
+    switch (resultados) {
+        case 0:
+            console.log("Debes generar al menos 1 resultado")
+            document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
+        break
+        case 1:
+            mostrarResultados(resultados)
+            document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
+        break
+        default:
+            mostrarResultados(resultados)
+            document.querySelector(".container-numeros-repetidos").classList.remove("desactivado")
+        break
     }
+}
+
+const mostrarResultados = (resultados) => {
+    const respuesta = document.getElementById("respuesta")
+    
+    respuesta.addEventListener("click", (resultados) => {
+        numerosAleatorio(resultados)
+    })
 }
 
 function numerosAleatorio(ejecuciones) {
@@ -23,4 +39,4 @@ function numerosAleatorio(ejecuciones) {
     respuesta.innerText = `Numeros: ${numeros.join(", ")}`
 }
 
-enviar.addEventListener("click", cantidadNumeros)
+resultadosInput.addEventListener("input", cantidadNumeros)
