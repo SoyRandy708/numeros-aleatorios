@@ -1,30 +1,55 @@
-const resultadosInput = document.getElementById("numero-resultados")
+const botonResultado = document.getElementById("enviar")
+const numerosValidacion = document.getElementsByName("numeros-validacion")
 
-function cantidadNumeros() {
+function validacion() {
+    const repetirNumeros = document.getElementById("numeros-repetidos")
     let resultados = parseInt(document.getElementById("numero-resultados").value) || 0
 
-    switch (resultados) {
-        case 0:
-            console.log("Debes generar al menos 1 resultado")
-            document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
-        break
-        case 1:
-            mostrarResultados(resultados)
-            document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
-        break
-        default:
-            mostrarResultados(resultados)
-            document.querySelector(".container-numeros-repetidos").classList.remove("desactivado")
-        break
+    if(resultados === 0) {
+        document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
+        botonResultado.disabled = true
+
+    } else if(resultados === 1) {
+        document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
+        botonResultado.disabled = false
+        botonResultado.onclick = () => numerosAleatorio(resultados)
+
+    } else if(resultados > 1 && repetirNumeros.checked) {
+        document.querySelector(".container-numeros-repetidos").classList.remove("desactivado")
+        botonResultado.disabled = false
+        botonResultado.onclick = () => numerosAleatorio(resultados)
+
+    } else if(resultados > 1) {
+        document.querySelector(".container-numeros-repetidos").classList.remove("desactivado")
+        botonResultado.disabled = false
+        botonResultado.onclick = () => numerosNoRepetidos(resultados)
+
     }
 }
 
-const mostrarResultados = (resultados) => {
-    const respuesta = document.getElementById("respuesta")
+const numerosNoRepetidos = (ejecuciones) => {
+    let minimo = parseInt(document.getElementById("numero-menor").value) || 0
+    let maximo = parseInt(document.getElementById("numero-mayor").value) || 0
+    let numeros = []
+
+    if((maximo - minimo + 1) >= ejecuciones) {
+        botonResultado.disabled = false
+
+        for (let index = 0; index < ejecuciones; index++) {
+            let numeroAleatorio = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo
     
-    respuesta.addEventListener("click", (resultados) => {
-        numerosAleatorio(resultados)
-    })
+            if(!numeros.includes(numeroAleatorio)) {
+                numeros.push(numeroAleatorio)
+            } else {
+                index--
+            }
+        }
+
+        respuesta.innerText = `Numeros: ${numeros.join(", ")}`
+    } else {
+        console.log("El rango de numeros tiene que ser mayor al numero de resultados")
+        botonResultado.disabled = true
+    }
 }
 
 function numerosAleatorio(ejecuciones) {
@@ -39,4 +64,6 @@ function numerosAleatorio(ejecuciones) {
     respuesta.innerText = `Numeros: ${numeros.join(", ")}`
 }
 
-resultadosInput.addEventListener("input", cantidadNumeros)
+numerosValidacion.forEach((input) => {
+    input.addEventListener('input', validacion)
+})

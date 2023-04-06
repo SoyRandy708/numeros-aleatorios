@@ -78,6 +78,10 @@ input[type="button"]:hover {
     transform: translateY(-5px);
 }
 
+.container-numeros-repetidos {
+    place-self: center;
+}
+
 .numeros-repetidos {
     display: flex;
     justify-content: center;
