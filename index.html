@@ -17,19 +17,22 @@
         <h1>Generador de numeros aleatorios</h1>
         <p>Introduce los rangos entre los cuales se generara un numero aleatorio y la cantidad de numeros que quieres.</p>
         <form>
-            <label for="numero-menor">
+            <label for="numero-menor" class="numero-menor-container">
                 Numero menor
-                <input type="number" value="1" name="numeros-validacion" id="numero-menor">
+                <input type="number" value="1" class="numeros-validacion" id="numero-menor">
+                <p class="desactivado"></p>
             </label>
 
-            <label for="numero-mayor">
+            <label for="numero-mayor" class="numero-mayor-container">
                 Numero mayor
-                <input type="number" value="10" name="numeros-validacion" id="numero-mayor">
+                <input type="number" value="10" class="numeros-validacion" id="numero-mayor">
+                <p class="desactivado"></p>
             </label>
 
-            <label for="numero-resultados">
+            <label for="numero-resultados" class="numero-resultados-container">
                 Numero de resultados
-                <input type="number" value="1" name="numeros-validacion" id="numero-resultados">
+                <input type="number" value="1" class="numeros-validacion" id="numero-resultados">
+                <p class="desactivado"></p>
             </label>
             
             <div class="container-numeros-repetidos desactivado">

@@ -78,6 +78,12 @@ input[type="button"]:hover {
     transform: translateY(-5px);
 }
 
+form input + p {
+    margin: 0;
+    font-size: 1.6rem;
+    color: red;
+}
+
 .container-numeros-repetidos {
     place-self: center;
 }
