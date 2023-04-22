@@ -8,3 +8,4 @@ Para este proyecto se utilizaron tecnologias como HTML, CSS y JS.
 ## Despliegue
 https://soyrandy708.github.io/FormularioConValidaciones/
 
+![](https://res.cloudinary.com/dwog1xmvw/image/upload/v1682198308/ProyectosPersonales/NumerosAleatorios/chrome_sneuIacfKC_bn4lka.png)
