@@ -8,9 +8,3 @@ Para este proyecto se utilizaron tecnologias como HTML, CSS y JS.
 ## Despliegue
 https://soyrandy708.github.io/FormularioConValidaciones/
 
-# Cosas por agregar:
-- La opcion de repetir o no errores.
-- Agregar disabled al boton para hacer las validaciones antes.
-- Mensajes de error.
-- Resideño de boton.
-- Mejora de estilos.

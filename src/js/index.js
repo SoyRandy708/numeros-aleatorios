@@ -6,7 +6,7 @@ const activarBoton = () => {
     let resultados = parseInt(document.getElementById("numero-resultados").value) || 0
     
     if(resultados < 1) {
-        document.querySelector(".numero-resultados-container p").textContent = "El numero minimo de resultados debe ser 1."
+        document.querySelector(".numero-resultados-container p").textContent = "El numero minimo de resultados es 1."
         document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
         document.querySelector(".numero-resultados-container p").classList.remove("desactivado")
         document.querySelector(".numero-menor-container p").classList.add("desactivado")
@@ -20,21 +20,28 @@ const activarBoton = () => {
         document.querySelector(".numero-mayor-container p").classList.add("desactivado")
         botonResultado.disabled = false
 
-    } else if(resultados > 1 && numerosRepetidos.checked) {
+    } else if(resultados > 1 && resultados <= 10000 && numerosRepetidos.checked) {
         document.querySelector(".container-numeros-repetidos").classList.remove("desactivado")
         document.querySelector(".numero-resultados-container p").classList.add("desactivado")
         document.querySelector(".numero-menor-container p").classList.add("desactivado")
         document.querySelector(".numero-mayor-container p").classList.add("desactivado")
         botonResultado.disabled = false
 
-    }  else if(resultados > 1) {
+    }  else if(resultados > 1 && resultados <= 10000) {
         document.querySelector(".container-numeros-repetidos").classList.remove("desactivado")
         document.querySelector(".numero-resultados-container p").classList.add("desactivado")
         document.querySelector(".numero-menor-container p").classList.add("desactivado")
         document.querySelector(".numero-mayor-container p").classList.add("desactivado")
         botonResultado.disabled = false
         validacionNoRepetidos(resultados)
-    } 
+    } else if(resultados > 10000) {
+        document.querySelector(".numero-resultados-container p").textContent = "El numero maximo de resultados es 10,000."
+        document.querySelector(".container-numeros-repetidos").classList.add("desactivado")
+        document.querySelector(".numero-resultados-container p").classList.remove("desactivado")
+        document.querySelector(".numero-menor-container p").classList.add("desactivado")
+        document.querySelector(".numero-mayor-container p").classList.add("desactivado")
+        botonResultado.disabled = true
+    }
 }
 
 const validacionNoRepetidos = (ejecuciones) => {
